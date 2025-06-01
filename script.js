@@ -116,22 +116,17 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 
 // contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
+function sendEmail(){
+  const templateParams = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
-
-  });
+  emailjs
+  .send("service_swvpuu8", "template_2evb1sm", templateParams)
+  .then(alert("Email sent!!"))
+  
 }
 
 
